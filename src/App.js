@@ -1,20 +1,15 @@
-import {BrowserRouter, Routes, Route, Outlet, Navigate} from 'react-router-dom'
-import {News, _list as NewsList, _single as NewsItem} from './pages/News'
-import About from "./pages/About/About";
+import {useState} from "react";
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
+import Index from "./pages/Index/Index";
 import Nav from "./components/Nav/Nav";
+import About from "./pages/About/About";
+import Catalog from "./pages/Catalog/Catalog"
+import {News, _list as NewsList, _single as NewsItem} from './pages/News'
 import User from "./pages/User/User";
+
 import {NewsContext, fakeApi} from './context/NewsContext'
 import {AuthContext} from './context/AuthContext'
 import './styles/style.scss'
-import {useState} from "react";
-
-function Main() {
-  return (
-    <div className="container">
-      <h2>Main</h2>
-    </div>
-  )
-}
 
 function Cars() {
   return (
@@ -32,15 +27,6 @@ function Trucks() {
   )
 }
 
-function Catalog() {
-  return (
-    <div className="container">
-      <h2>Catalog</h2>
-      <Outlet/>
-    </div>
-  )
-}
-
 function NotFound() {
   return (
     <div className="container">
@@ -50,7 +36,6 @@ function NotFound() {
 }
 
 function App() {
-  
   const [isLogin, setIsLogin] = useState(false)
   
   return (
@@ -59,9 +44,9 @@ function App() {
         <BrowserRouter>
           <Nav />
           <Routes>
-            <Route path="/" element={<Main />}/>
+            <Route path="/" element={<Index />}/>
             <Route path="/about" element={<About />}/>
-            <Route path="/user" element={isLogin ? <User/> : <Navigate to="/" />}/>
+            <Route path="/user" element={isLogin ? <User/> : <Navigate to="/"/>}/>
             <Route path="/catalog/*" element={<Catalog />}>
               <Route index element={<div>foo</div>}/>
               <Route path="cars" element={<Cars />}/>

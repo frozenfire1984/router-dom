@@ -1,12 +1,12 @@
 import {useContext} from "react";
 import {NavLink} from "react-router-dom";
+import {CustomLink} from "../CustomLink/CustomLink";
 import useIsActive from "../../hooks/useIsActive";
 import './Nav.scss'
 import {AuthContext} from "../../context/AuthContext";
+import { FaHome, FaInfoCircle, FaListUl, FaRegNewspaper, FaUserAlt } from "react-icons/fa";
 
-/*function isActive() {
-	return ({isActive}) => (isActive ? 'active-link' : '')
-}*/
+
 
 function Nav() {
 	
@@ -17,28 +17,28 @@ function Nav() {
 		<header className="header">
 			<ul className="nav nav_primary">
 				<li>
-					<NavLink className={isActive()} to="/">index</NavLink>
+					<CustomLink to="/" icon={<FaHome />} bold>index</CustomLink>
 				</li>
 				<li>
-					<NavLink className={isActive()} to="/about?some=foo">About</NavLink>
+					<CustomLink to="/about?some=foo" icon={<FaInfoCircle />}>About</CustomLink>
 				</li>
 				<li>
-					<NavLink className={isActive()} to="/catalog">Catalog</NavLink>
+					<CustomLink to="/catalog" icon={<FaListUl />}>Catalog</CustomLink>
 					<ul>
 						<li>
-							<NavLink className={isActive()} to="/catalog/cars">Cars</NavLink>
+							<CustomLink to="/catalog/cars">Cars</CustomLink>
 						</li>
 						<li>
-							<NavLink className={isActive()} to="/catalog/trucks">Trucks</NavLink>
+							<CustomLink to="/catalog/trucks">Trucks</CustomLink>
 						</li>
 					</ul>
 				</li>
 				<li>
-					<NavLink className={isActive()} to="/news">News</NavLink>
+					<CustomLink to="/news" icon={<FaRegNewspaper />}>News</CustomLink>
 				</li>
 				{isLogin &&
 				<li>
-					<NavLink className={isActive()} to="/user">User</NavLink>
+					<CustomLink to="/user" icon={<FaUserAlt />}>User</CustomLink>
 				</li>
 				}
 			</ul>
@@ -54,7 +54,6 @@ function Nav() {
 					</li>
 				}
 			</ul>
-
 		</header>
 	)
 }
