@@ -1,0 +1,54 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: hsl(0, 0%, 90%);
+  border-bottom: 1px hsl(0, 0%, 70%) solid;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  margin: 0 ;
+  padding: 0;
+
+  li {
+    position: relative;
+    list-style: none;
+
+    a, .like-a {
+      text-decoration: none;
+      color: #000;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &.active-link {
+        color: brown;
+      }
+    }
+  }
+
+  > li {
+    & > ul {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      padding: .5rem;
+      background: hsl(0, 0%, 90%);
+      border: 1px hsl(0, 0%, 70%) solid;
+
+      > li {
+        margin-block: .5rem;
+
+      }
+    }
+
+    &:hover > ul {
+      display: block;
+    }
+  }
+}
