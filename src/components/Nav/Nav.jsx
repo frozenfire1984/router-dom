@@ -1,17 +1,18 @@
 import {useContext} from "react";
-import {NavLink} from "react-router-dom";
 import {CustomLink} from "../CustomLink/CustomLink";
-import useIsActive from "../../hooks/useIsActive";
 import './Nav.scss'
 import {AuthContext} from "../../context/AuthContext";
-import { FaHome, FaInfoCircle, FaListUl, FaRegNewspaper, FaUserAlt } from "react-icons/fa";
-
-
+import { FaHome, FaInfoCircle, FaListUl, FaRegNewspaper, FaUserAlt, FaSignInAlt } from "react-icons/fa";
 
 function Nav() {
+	const {isLogin, setIsLogin, userName, setUserName} = useContext(AuthContext)
 	
-	const {isLogin, setIsLogin} = useContext(AuthContext)
-	const {isActive} = useIsActive()
+	const logoutHandler = () => {
+	  setIsLogin(false)
+		setUserName("")
+		localStorage.removeItem('isLogin')
+		localStorage.removeItem('userName')
+	}
 	
 	return (
 		<header className="header">
@@ -36,24 +37,25 @@ function Nav() {
 				<li>
 					<CustomLink to="/news" icon={<FaRegNewspaper />}>News</CustomLink>
 				</li>
-				{isLogin &&
+				{/*{isLogin &&*/}
 				<li>
-					<CustomLink to="/user" icon={<FaUserAlt />}>User</CustomLink>
+					<CustomLink to="/user" icon={<FaUserAlt />} noset>User</CustomLink>
 				</li>
-				}
+				{/*}*/}
 			</ul>
 			<ul className="nav">
 				{isLogin
 					?
 					<li>
-						<span  className="like-a" onClick={() => setIsLogin(false)}>Sign Out</span>
+						<span className="like-a" onClick={logoutHandler}>Sign Out</span>
 					</li>
 					:
 					<li>
-						<span className="like-a" onClick={() => setIsLogin(true)}>Sign in</span>
+						<CustomLink to="/login" icon={<FaSignInAlt />}>Sign in</CustomLink>
 					</li>
 				}
 			</ul>
+			{isLogin && <div className="header__username">{userName}</div>}
 		</header>
 	)
 }

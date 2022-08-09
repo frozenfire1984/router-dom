@@ -1,9 +1,21 @@
 .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   padding: 1rem;
   background: hsl(0, 0%, 90%);
   border-bottom: 1px hsl(0, 0%, 70%) solid;
+
+  & &__username {
+    position: absolute;
+    top: 100%;
+    margin-top: 1rem;
+    right: 1rem;
+    padding: .5rem;
+    background: hsl(0, 0%, 90%);
+    border: 1px hsl(0, 0%, 70%) solid;
+    border-radius: .3rem;
+  }
 }
 
 .nav {

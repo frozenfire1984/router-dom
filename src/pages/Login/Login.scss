@@ -1,0 +1,30 @@
+.login {
+  max-width: 20rem;
+  padding-top: 5rem;
+  margin: 0 auto;
+
+  & &__row {
+    margin-block: 2rem;
+  }
+
+  & &__error {
+    font-size: .8em;
+    font-style: italic;
+    color: red;
+  }
+
+  & &__sus-msg {
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    margin-bottom: .5rem;
+  }
+
+  input {
+    height: 2rem;
+    width: 100%;
+    border: 1px hsl(0, 0%, 80%) solid;
+  }
+}

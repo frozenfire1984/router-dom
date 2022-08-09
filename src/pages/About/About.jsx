@@ -5,8 +5,7 @@ function About() {
 	
 	const {upper} = useUpperCase()
 	const [searchParams, setSearchParams] = useSearchParams()
-	
-	console.log(upper("foo bar"))
+	//console.log(upper("foo bar"))
 	
 	return (
 		<div className="container">
